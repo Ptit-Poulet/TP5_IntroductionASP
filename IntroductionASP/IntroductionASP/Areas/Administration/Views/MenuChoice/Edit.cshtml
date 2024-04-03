@@ -3,3 +3,45 @@
 *@
 @{
 }
+@section Links
+{
+    <!--
+        Section qui permet d'ajouter des balises dans <head> seulement dans cette vue
+    -->
+
+    <link rel="stylesheet" href="~/css/administration.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/administration-boostrap.css" asp-append-version="true" />
+}
+<div>
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title">
+                @*Image!*@
+                <h2>Modifier un choix de menu</h2>
+            </div>
+        </div>
+    </div>
+     <div class="form-section">
+            <form>
+                <div class="row">
+                    <div class="col-md-4 offset-md-2">
+                        <div class="form-group">
+                            <label class="form-control-label" for="name"> Description</label>
+                            @*Item choisi*@
+                            <input type="text" class="form-control" name="description" id="description">
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-4 offset-md-2">
+                        <div class="form-button">
+                            <span class="input-group-btn">
+                                @*Renvoyer à List*@
+                                <button href="" type="submit" class="btn btn-primary">Modifier</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
