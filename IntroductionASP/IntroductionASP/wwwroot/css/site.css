@@ -23,3 +23,21 @@ footer {
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
 }
+.page-title {
+    margin-bottom: 0;
+}
+
+#reservation-page {
+    padding-bottom: 60px;
+}
+
+    #reservation-page .form-section {
+        margin-top: 40px;
+        text-align: left;
+    }
+
+        #reservation-page .form-section .form-button {
+            margin-top: 15px;
+            text-align: center;
+        }
+

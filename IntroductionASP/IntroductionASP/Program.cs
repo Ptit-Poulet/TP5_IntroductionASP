@@ -1,3 +1,5 @@
+using Microsoft.Extensions.FileProviders;
+
 namespace IntroductionASP
 {
     public class Program
@@ -21,6 +23,11 @@ namespace IntroductionASP
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Areas\\Administration\\assets")),
+                RequestPath = new PathString("/Administration/assets")
+            });
 
             app.UseRouting();
 
