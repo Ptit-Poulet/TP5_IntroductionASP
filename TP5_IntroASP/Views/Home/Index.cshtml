@@ -1,8 +1,83 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<Menuchoices>
+@{
+    ViewData["Title"] = "Réservation en ligne";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <div class="col-12">
+        <div class="page-title">
+            <h2>Votre réservation</h2>
+        </div>
+    </div>
 </div>
+<div class="row">
+    <div class="d-none d-md-block">
+        <img src="../img/Reservation-Icon.png" alt="Réservation"/>
+    </div>
+
+    <div class="col-6 col-sm-12">
+        <div class="form-section">
+            <form>
+                <div class="row">
+                    <div class="col-md-4 offset-md-2">
+                        <div class="form-group">
+                            <label class="form-control-label" for="name"> Nom</label>
+                            <input type="text" class="form-control" name="name" id="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4  offset-md-2">
+                        @*Jquery*@
+                        <div class="form-group">
+                            <label class="form-control-label" for="email"> Courriel</label>
+                            <input type="email" class="form-control" name="email" id="email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 offset-md-2">
+                        @*Jquery*@
+                        <div class="form-group">
+                            <label class="form-control-label" for="name"> Nombre</label>
+                            <input type="number" class="form-control" name="number" id="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 offset-md-2">
+                        @*Jquery*@
+                        <div class="form-group">
+                            <label class="form-control-label" for="name"> Date</label>
+                            <input type="date" class="form-control" name="date" id="date">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 offset-md-2">
+                        <div class="form-group">
+                            <label class="form-control-label" for="name"> Choix de menu</label>
+                            <select class="combo">
+                                @foreach(Menuchoices choix in Model){
+                                    @*menuchoices.Description*@
+                                    <option value="@choix.Description">@Html.DisplayFor(model => choix.Description)</option>
+                                }
+                            
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 offset-md-2">
+                        <div class="form-button">
+                            <span class="input-group-btn">
+                                @*Renvoyer à reservation/details/{id}*@
+                                <button href="" type="submit" class="btn btn-primary">Confirmer la réservation</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

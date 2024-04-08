@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using TP5_IntroASP.DataAccessLayer;
 using TP5_IntroASP.Models;
 
 namespace TP5_IntroASP.Controllers
@@ -15,7 +16,9 @@ namespace TP5_IntroASP.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            DAL dal = new DAL();
+            List<Menuchoices> choix = dal.MenuchoicesFact.GetAll();
+            return View(choix);
         }
 
         public IActionResult Privacy()
@@ -28,5 +31,7 @@ namespace TP5_IntroASP.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+       
     }
 }
