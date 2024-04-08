@@ -1,4 +1,4 @@
-﻿@*@model ProductListVM
+﻿@model ProductListVM
 @{
     ViewData["Title"] = "Liste des produits";
 }
@@ -19,6 +19,7 @@
                     <th>Catégorie</th>
                     <th>Quantité en stock</th>
                     -->
+
                     <!-- Permet d'utiliser l'attribut Display(Name="...") de propriété du modèle -->
                     <!-- Permet de gérer l'affichage du modèle à un seul endroit -->
 
@@ -38,6 +39,7 @@
                             <td>@*product.Name*@</td>
                             <td>@*product.QuantityInStock*@</td>
                             -->
+                            
                             <!-- Génère le html selon les attributs de propriété du modèle. Comme par exemple, l'attribut DisplayFormat(...) -->
                             <!-- Permet de gérer l'affichage du modèle à un seul endroit -->
 
@@ -62,4 +64,3 @@
         </div>
     </div>
 </div>
-*@
