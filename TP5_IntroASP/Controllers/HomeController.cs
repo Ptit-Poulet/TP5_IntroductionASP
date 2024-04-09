@@ -20,7 +20,12 @@ namespace TP5_IntroASP.Controllers
             List<Menuchoices> choix = dal.MenuchoicesFact.GetAll();
             return View(choix);
         }
-
+        public IActionResult GetReservation(int id)
+        {
+            DAL dal = new DAL();
+            Reservations reservation = dal.ReservationFact.Get(id);
+            return View(reservation);   
+        }
         public IActionResult Privacy()
         {
             return View();

@@ -1,0 +1,30 @@
+﻿@model Reservations
+@{
+    ViewData["Title"] = "Réservation en ligne";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="page-title">
+            <h2>Réservation complétée avec succès</h2>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="d-none d-md-block">
+        <img src="~/img/Complet.png" alt="RéservationComplétée" />
+    </div>
+
+    <div class="col-6 col-sm-12 text-center">
+        <p><b>Nom: </b></p>
+        <p><b>Courriel: </b></p>
+        <p><b>Nombre: </b></p>
+        <p><b>Date: </b></p>
+        <p><b>Choix de menu: </b></p>
+        <p>Merci d'avoir utiliser notre module de réservation en ligne au plaisir de vous voir bientôt.</p>
+        <br>
+        <p>L'équipe</p>
+
+        <a asp-area="" asp-controller="Home" asp-action="Index">Retourner à la page d'accueil'</a>
+    </div>
+</div>
+

@@ -11,12 +11,13 @@
 </div>
 <div class="row">
     <div class="d-none d-md-block">
-        <img src="../img/Reservation-Icon.png" alt="Réservation"/>
+        <img src="~/img/Reservation-Icon.png" alt="Réservation"/>
     </div>
 
     <div class="col-6 col-sm-12">
         <div class="form-section">
-            <form>
+            @*DOIT ÊTRE UN POST *@
+            <form method="post">
                 <div class="row">
                     <div class="col-md-4 offset-md-2">
                         <div class="form-group">
@@ -39,7 +40,7 @@
                         @*Jquery*@
                         <div class="form-group">
                             <label class="form-control-label" for="name"> Nombre</label>
-                            <input type="number" class="form-control" name="number" id="number">
+                            <input type="text" class="form-control" name="number" id="number" min="0">
                         </div>
                     </div>
                 </div>
@@ -48,7 +49,7 @@
                         @*Jquery*@
                         <div class="form-group">
                             <label class="form-control-label" for="name"> Date</label>
-                            <input type="date" class="form-control" name="date" id="date">
+                            <input type="text" class="form-control" name="date" id="date">
                         </div>
                     </div>
                 </div>
