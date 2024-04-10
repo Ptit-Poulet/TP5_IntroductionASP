@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.Extensions.FileProviders;
 using TP5_IntroASP.DataAccessLayer;
 

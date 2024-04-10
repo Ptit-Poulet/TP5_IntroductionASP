@@ -1,0 +1,45 @@
+﻿@model Reservations
+@{
+    ViewData["Title"] = "Supprimer une réservation";
+}
+<div id="product-delete-page">
+    <div class="row">
+        <div class="offset-md-1 offset-lg-2 col-md-10 col-lg-8">
+            <div class="page-title">
+                <h2><i class="fa-regular fa-rectangle-list"></i> Supprimer une réservation</h2>
+            </div>
+            <div class="form-section">
+                <h5>Êtes-vous certain de vouloir supprimer cet item ?</h5>
+                <hr />
+                <div class="row details-row">
+                    <div class="col-sm-6">@Html.DisplayNameFor(model => model.DateReservation) : </div>
+                    <div class="col-sm-6">@Html.DisplayFor(model => model.DateReservation)</div>
+                </div> 
+                <div class="row details-row">
+                    <div class="col-sm-6">@Html.DisplayNameFor(model => model.Nom) : </div>
+                    <div class="col-sm-6">@Html.DisplayFor(model => model.Nom)</div>
+                </div> 
+                <div class="row details-row">
+                    <div class="col-sm-6">@Html.DisplayNameFor(model => model.Courriel) : </div>
+                    <div class="col-sm-6">@Html.DisplayFor(model => model.Courriel)</div>
+                </div> 
+                <div class="row details-row">
+                    <div class="col-sm-6">@Html.DisplayNameFor(model => model.NbPersonne) : </div>
+                    <div class="col-sm-6">@Html.DisplayFor(model => model.NbPersonne)</div>
+                </div> 
+                <div class="row details-row">
+                    <div class="col-sm-6">@Html.DisplayNameFor(model => model.MenuChoiceId) : </div>
+                    <div class="col-sm-6">@Html.DisplayFor(model => model.MenuChoiceId)</div>
+                </div>
+
+                <hr />
+                <form asp-action="Delete">
+                    <input type="submit" value="Supprimer" class="btn btn-danger" />
+                </form>
+            </div>
+            <div class="links">
+                <a asp-action="List">Retour à la liste des réservations</a>
+            </div>
+        </div>
+    </div>
+</div>

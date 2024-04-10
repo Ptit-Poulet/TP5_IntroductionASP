@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Asn1.Mozilla;
 using System.ComponentModel;
 using TP5_IntroASP.Models;
 
@@ -88,6 +89,37 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
 
             return choice;
         }
+        public Menuchoices GetByDescription(string  description)    
+        {
+            Menuchoices choice = new Menuchoices();
+            MySqlConnection? mySqlCnn = null;
+            MySqlDataReader? mySqlDataReader = null;
+
+            try
+            {
+                mySqlCnn = new MySqlConnection(DAL.ConnectionString);
+                mySqlCnn.Open();
+
+                MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
+                mySqlCmd.CommandText = "SELECT * FROM tp5_menuchoices WHERE Description = @Description";
+
+                mySqlCmd.Parameters.AddWithValue("@Description", description);
+
+                mySqlDataReader = mySqlCmd.ExecuteReader();
+                while (mySqlDataReader.Read())
+                {
+                    choice = CreateFromReader(mySqlDataReader);
+                }
+            }
+            finally
+            {
+                mySqlDataReader?.Close();
+                mySqlCnn?.Close();
+            }
+
+            return choice;
+        }
+
 
         /// <summary>
         /// Ajoute un choix dans le menu avec sa description
@@ -110,7 +142,7 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
 
                 mySqlCmd.Parameters.AddWithValue("@Description", description);
 
-                mySqlDataReader = mySqlCmd.ExecuteReader();
+                mySqlCmd.ExecuteNonQuery();
                
             }
             finally
@@ -141,7 +173,8 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
 
                 mySqlCmd.Parameters.AddWithValue("@Id", id);
 
-                mySqlDataReader = mySqlCmd.ExecuteReader();
+                mySqlCmd.ExecuteNonQuery();
+
 
             }
             finally
@@ -173,12 +206,56 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
                 mySqlCmd.Parameters.AddWithValue("@Description", description);
                 mySqlCmd.Parameters.AddWithValue("@Id", id);
 
-                mySqlDataReader = mySqlCmd.ExecuteReader();
+                mySqlCmd.ExecuteNonQuery();
+
 
             }
             finally
             {
                 mySqlDataReader?.Close();
+                mySqlCnn?.Close();
+            }
+        }
+
+        public void Save(Menuchoices menu)
+        {
+            MySqlConnection? mySqlCnn = null;
+
+            try
+            {
+                mySqlCnn = new MySqlConnection(DAL.ConnectionString);
+                mySqlCnn.Open();
+
+                MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
+                if (menu.Id == 0)
+                {
+                    // On sait que c'est un nouveau produit avec Id == 0,
+                    // car c'est ce que nous avons affecter dans la fonction CreateEmpty().
+                    mySqlCmd.CommandText = "INSERT INTO tp5_menuchoices(Description) " +
+                                           "VALUES (@Description)";
+                }
+                else
+                {
+                    mySqlCmd.CommandText = "UPDATE tp5_menuchoices " +
+                                           "SET Description=@Description" +
+                                           "WHERE Id=@Id";
+
+                    mySqlCmd.Parameters.AddWithValue("@Id", menu.Id);
+                }
+
+                mySqlCmd.Parameters.AddWithValue("@Description", menu.Description?.Trim());
+
+                mySqlCmd.ExecuteNonQuery();
+
+                if (menu.Id == 0)
+                {
+                    // Si c'était un nouveau produit (requête INSERT),
+                    // nous affectons le nouvel Id de l'instance au cas où il serait utilisé dans le code appelant.
+                    menu.Id = (int)mySqlCmd.LastInsertedId;
+                }
+            }
+            finally
+            {
                 mySqlCnn?.Close();
             }
         }

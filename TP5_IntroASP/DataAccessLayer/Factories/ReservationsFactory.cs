@@ -73,7 +73,7 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
                 mySqlCnn.Open();
 
                 MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
-                mySqlCmd.CommandText = "SELECT * FROM tp5_reservations " +
+                mySqlCmd.CommandText = "SELECT * FROM tp5_reservations ORDER BY DateReservation DESC" +
                     "WHERE Id = @Id";
 
                 mySqlCmd.Parameters.AddWithValue("@Id", id);
@@ -122,7 +122,8 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
                 mySqlCmd.Parameters.AddWithValue("@DateReservation", dateReservation);
                 mySqlCmd.Parameters.AddWithValue("@MenuChoiceId", menuchoiceId);
 
-                mySqlDataReader = mySqlCmd.ExecuteReader();
+                mySqlCmd.ExecuteNonQuery();
+
 
             }
             finally
@@ -152,7 +153,8 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
 
                 mySqlCmd.Parameters.AddWithValue("@Id", id);
 
-                mySqlDataReader = mySqlCmd.ExecuteReader();
+                mySqlCmd.ExecuteNonQuery();
+
 
             }
             finally

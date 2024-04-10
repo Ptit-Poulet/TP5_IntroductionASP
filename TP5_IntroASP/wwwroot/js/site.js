@@ -3,7 +3,7 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
-   $('#number').attr('type', 'number');
+    $('#number').attr('type', 'number');
 
     $('#date').attr('type', 'date');
 });

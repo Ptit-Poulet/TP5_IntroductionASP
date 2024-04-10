@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TP5_IntroASP</title>
+    <title>@ViewData["Title"]</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -16,7 +16,6 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Réservation en ligne</a>
-              
             </div>
         </nav>
     </header>
@@ -28,7 +27,9 @@
 
     <footer class="border-top footer text-muted">
         <div class="container text-center">
-            ASP.NET MVC - &copy;Samara Boudreault
+            ASP.NET MVC - &copy;Samara Boudreault |
+            <a asp-area="Admin" asp-controller="Menuchoices" asp-action="Index">Administration</a>
+
         </div>
     </footer>
 

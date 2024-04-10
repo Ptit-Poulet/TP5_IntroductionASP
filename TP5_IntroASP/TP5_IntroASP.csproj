@@ -26,8 +26,4 @@
     <PackageReference Include="MySql.Data" Version="8.0.32" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-  </ItemGroup>
-
 </Project>
