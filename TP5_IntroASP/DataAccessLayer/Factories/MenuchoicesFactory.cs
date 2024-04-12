@@ -237,7 +237,7 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
                 else
                 {
                     mySqlCmd.CommandText = "UPDATE tp5_menuchoices " +
-                                           "SET Description=@Description" +
+                                           "SET Description=@Description " +
                                            "WHERE Id=@Id";
 
                     mySqlCmd.Parameters.AddWithValue("@Id", menu.Id);

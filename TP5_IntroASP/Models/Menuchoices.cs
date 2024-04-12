@@ -8,7 +8,7 @@ namespace TP5_IntroASP.Models
         public int Id { get; set; }
 
         [Display(Name = "Description")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "La descriptione est requise.")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "La description est requise.")]
         [StringLength(30, ErrorMessage = "La description ne peut pas avoir plus de {1} caractères.")]
         public string Description { get; set; } = string.Empty;
         

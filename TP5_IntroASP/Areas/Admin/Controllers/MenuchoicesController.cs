@@ -10,17 +10,13 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            return View();
-        }
-        public IActionResult List()
-        {
             DAL dal = new DAL();
 
-            List<Menuchoices> menuchoices = dal.MenuchoicesFact.GetAll(); 
+            List<Menuchoices> menuchoices = dal.MenuchoicesFact.GetAll();
 
             return View(menuchoices);
         }
-
+     
         public IActionResult Create()
         {
             DAL dal = new DAL();
@@ -38,13 +34,13 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
             {
                 DAL dal = new DAL();
 
-                Menuchoices? existe = dal.MenuchoicesFact.Get(menu.Id);
-                if (existe != null)
+                Menuchoices? existe = dal.MenuchoicesFact.GetByDescription(menu.Description);
+                if (existe != null && existe.Description == menu.Description)
                 {
-                    ModelState.AddModelError("Produit.Description", "Le choix de menu existe déjà.");
+                    ModelState.AddModelError("menu.Description", "Le choix de menu existe déjà.");
                 }
 
-                if (menu != null)
+                if (!ModelState.IsValid)
                 {
 
                     return View("CreateEdit", menu);
@@ -81,9 +77,9 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
                 DAL dal = new DAL();
 
                 Menuchoices? existe = dal.MenuchoicesFact.GetByDescription(menu.Description);
-                if (existe != null && existe.Id != menu.Id)
+                if (existe != null && existe.Description == menu.Description)
                 {
-                    ModelState.AddModelError("Produit.Description", "Le choix de menu existe déjà.");
+                    ModelState.AddModelError("menu.Description", "Le choix de menu existe déjà.");
                 }
 
                 if (!ModelState.IsValid)
@@ -95,7 +91,7 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
                 dal.MenuchoicesFact.Save(menu);
             }
 
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
@@ -112,7 +108,7 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
                 }
             }
 
-            return View("AdminMessage", new AdminMessageVM("L'identifiant du  est introuvable."));
+            return View("AdminMessage", new AdminMessageVM("L'identifiant est introuvable."));
         }
 
         [HttpPost]
