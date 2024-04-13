@@ -70,13 +70,14 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Menuchoices menu)
+        public IActionResult Edit(Menuchoices menu)
         {
             if (menu != null && menu.Description != null)
             {
                 DAL dal = new DAL();
 
                 Menuchoices? existe = dal.MenuchoicesFact.GetByDescription(menu.Description);
+                
                 if (existe != null && existe.Description == menu.Description)
                 {
                     ModelState.AddModelError("menu.Description", "Le choix de menu existe déjà.");

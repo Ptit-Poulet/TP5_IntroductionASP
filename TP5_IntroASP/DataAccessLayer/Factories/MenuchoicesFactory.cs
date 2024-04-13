@@ -120,6 +120,36 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
             return choice;
         }
 
+        public Menuchoices GetById(int id)
+        {
+            Menuchoices choice = new Menuchoices();
+            MySqlConnection? mySqlCnn = null;
+            MySqlDataReader? mySqlDataReader = null;
+
+            try
+            {
+                mySqlCnn = new MySqlConnection(DAL.ConnectionString);
+                mySqlCnn.Open();
+
+                MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
+                mySqlCmd.CommandText = "SELECT * FROM tp5_menuchoices WHERE Id = @Id";
+
+                mySqlCmd.Parameters.AddWithValue("@Id", id);
+
+                mySqlDataReader = mySqlCmd.ExecuteReader();
+                while (mySqlDataReader.Read())
+                {
+                    choice = CreateFromReader(mySqlDataReader);
+                }
+            }
+            finally
+            {
+                mySqlDataReader?.Close();
+                mySqlCnn?.Close();
+            }
+
+            return choice;
+        }
 
         /// <summary>
         /// Ajoute un choix dans le menu avec sa description

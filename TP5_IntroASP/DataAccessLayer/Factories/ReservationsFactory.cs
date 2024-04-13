@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using TP5_IntroASP.Models;
 
 namespace TP5_IntroASP.DataAccessLayer.Factories
@@ -73,8 +74,8 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
                 mySqlCnn.Open();
 
                 MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
-                mySqlCmd.CommandText = "SELECT * FROM tp5_reservations ORDER BY DateReservation DESC" +
-                    "WHERE Id = @Id";
+                mySqlCmd.CommandText = "SELECT * FROM tp5_reservations " +
+                    "WHERE Id = @Id ORDER BY DateReservation DESC";
 
                 mySqlCmd.Parameters.AddWithValue("@Id", id);
 

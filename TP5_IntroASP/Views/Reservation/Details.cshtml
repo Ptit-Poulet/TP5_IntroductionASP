@@ -16,26 +16,27 @@
 
     <div class="col-6 col-sm-12 text-center">
         <div class="row details-row">
-            <div class="col-sm-6">@Html.DisplayNameFor(model => model.Nom) : </div>
+            <div class="col-sm-6 font-weight-bold">@Html.DisplayNameFor(model => model.Nom) : </div>
             <div class="col-sm-6">@Html.DisplayFor(model => model.Nom)</div>
         </div>
         <div class="row details-row">
-            <div class="col-sm-6">@Html.DisplayNameFor(model => model.Courriel) : </div>
+            <div class="col-sm-6 font-weight-bold">@Html.DisplayNameFor(model => model.Courriel) : </div>
             <div class="col-sm-6">@Html.DisplayFor(model => model.Courriel)</div>
         </div>
         <div class="row details-row">
-            <div class="col-sm-6">@Html.DisplayNameFor(model => model.NbPersonne) : </div>
+            <div class="col-sm-6 font-weight-bold">@Html.DisplayNameFor(model => model.NbPersonne) : </div>
             <div class="col-sm-6">@Html.DisplayFor(model => model.NbPersonne)</div>
-            <div class="row details-row">
-                <div class="col-sm-6">@Html.DisplayNameFor(model => model.DateReservation) : </div>
-                <div class="col-sm-6">@Html.DisplayFor(model => model.DateReservation)</div>
-            </div>
-            <div class="row details-row">
-                <div class="col-sm-6">@Html.DisplayNameFor(model => model.MenuChoiceId) : </div>
-                <div class="col-sm-6">@Html.DisplayFor(model => model.MenuChoiceId)</div>
-            </div>
-
         </div>
+
+        <div class="row details-row">
+            <div class="col-sm-6 font-weight-bold">@Html.DisplayNameFor(model => model.DateReservation) : </div>
+            <div class="col-sm-6">@Html.DisplayFor(model => model.DateReservation)</div>
+        </div>
+        <div class="row details-row">
+            <div class="col-sm-6 font-weight-bold">@Html.DisplayNameFor(model => model.MenuChoiceId) : </div>
+            <div class="col-sm-6">@Html.DisplayFor(model => model.MenuChoiceId)</div>
+        </div>
+
         <p>Merci d'avoir utiliser notre module de réservation en ligne au plaisir de vous voir bientôt.</p>
         <br>
         <p>L'équipe</p>
