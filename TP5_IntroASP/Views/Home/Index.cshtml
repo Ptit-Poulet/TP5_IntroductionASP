@@ -5,30 +5,29 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6 d-none d-md-block">
+        <div class="col-md-4 d-none d-md-block">
             <img src="~/img/Reserve-Icon.png" alt="Réservation" class="w-100" />
         </div>
-        <div class="col-md-6">
-        <div class="page-title">
+        <div class="col">
+            <div class="page-title text-center">
             <h2>Votre réservation</h2>
-        </div>
+            </div>
             <div class="form-section">
                 <form method="post">
-                    <div class="row">
-                        <div class="col">
-                            <label class="form-control-label" for="name"> Nom</label>
+                    <div class="row ">
+                        <div class="col-4 text-end">
+                            <label class="form-control-label" for="name"> <b>Nom</b></label>
                         </div>
-                        <div class="col">
+                        <div class="col text-start">
                             <input type="text" class="form-control" name="name" id="name">
                         </div>
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col">
-
-                            <label class="form-control-label" for="email"> Courriel</label>
+                        <div class="col-4 text-end">
+                            <label class="form-control-label" for="email"><b>Courriel</b></label>
                         </div>
-                        <div class="col">
+                        <div class="col text-start">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">@@</div>
@@ -40,29 +39,29 @@
                     </div>
                         <br />
                     <div class="row">
-                        <div class="col">
-                            <label class="form-control-label" for="name"> Nombre</label>
+                        <div class="col-4 text-end">
+                            <label class="form-control-label font-weight-bold" for="name"><b>Nombre</b></label>
                         </div>
-                        <div class="col">
+                        <div class="col text-start">
                             <input type="text" class="form-control" name="number" id="number" min="0">
 
                         </div>
                     </div>
                         <br />
                     <div class="row">
-                        <div class="col">
-                            <label class="form-control-label" for="name"> Date</label>
+                        <div class="col-4 text-end">
+                            <label class="form-control-label font-weight-bold" for="name"><b>Date</b></label>
                         </div>
-                        <div class="col">
+                        <div class="col text-start">
                             <input type="text" class="form-control" name="date" id="date">
                         </div>
                     </div>
                         <br />
                     <div class="row">
-                        <div class="col">
-                            <label class="form-control-label" for="name"> Choix de menu</label>
+                        <div class="col-4 text-end">
+                            <label class="form-control-label font-weight-bold" for="name"><b>Choix de menu</b></label>
                         </div>
-                        <div class="col">
+                        <div class="col text-start">
                                <select class="combo">
                                 @foreach (Menuchoices choix in Model)
                                 {
@@ -74,7 +73,7 @@
                         </div>
                     </div>
                         <br />
-                    <div class="row">
+                    <div class="row text-center">
                         <div class="col">
                             <div class="form-button">
                                 <span class="input-group-btn">
