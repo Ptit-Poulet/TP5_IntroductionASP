@@ -34,6 +34,7 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
             {
                 DAL dal = new DAL();
 
+                //TODO si Il y a déjà ce choix
                 Menuchoices? existe = dal.MenuchoicesFact.GetByDescription(menu.Description);
                 if (existe != null && existe.Description == menu.Description)
                 {
@@ -75,7 +76,7 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
             if (menu != null && menu.Description != null)
             {
                 DAL dal = new DAL();
-
+                //TODO si Il n'y a aucune modification
                 Menuchoices? existe = dal.MenuchoicesFact.GetByDescription(menu.Description);
                 
                 if (existe != null && existe.Description == menu.Description)
