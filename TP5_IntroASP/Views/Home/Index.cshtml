@@ -1,82 +1,71 @@
-﻿@model List<Menuchoices>
+﻿@model ReservationVM
 @{
     ViewData["Title"] = "Réservation en ligne";
 }
-<div class="row text-center">
-    <div class="col-12">
-        <div class="page-title">
-            <h2>Votre réservation</h2>
-        </div>
-    </div>
-</div>
+
 <div class="container">
     <div class="row">
-        <div class="col-md-6 d-none d-md-block">
+        <div class="col-md-4 d-none d-md-block">
             <img src="~/img/Reserve-Icon.png" alt="Réservation" class="w-100" />
         </div>
-        <div class="col-md-6">
+        <div class="col">
+            <div class="page-title text-center">
+                <h2>Votre réservation</h2>
+            </div>
             <div class="form-section">
-                <form method="post">
-                    <div class="row">
-                        <div class="col">
-                            <label class="form-control-label" for="name"> Nom</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" name="name" id="name">
+                <hr />
+                <form asp-action="Index">
+                    <div class="form-group row">
+                        <label asp-for="Reservation.Nom" class="col-form-label col-md-3"><b>Nom</b></label>
+                        <div class="col-md-9">
+                            <input asp-for="Reservation.Nom" class="form-control" />
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-
-                            <label class="form-control-label" for="email"> Courriel</label>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">@@</div>
-                                </div>
-                                <input type="text" class="form-control" id="email" name="email">
+                    <br />
+                    <div class="form-group row">
+                        <label asp-for="Reservation.Courriel" class="col-form-label col-md-3"><b>Courriel</b></label>
+                        <div class="col-md-9 input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">@@</div>
                             </div>
-
+                            <input asp-for="Reservation.Courriel" class="form-control"/>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <label class="form-control-label" for="name"> Nombre</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" name="number" id="number" min="0">
-
+                    <br />
+                    <div class="form-group row">
+                        <label asp-for="Reservation.NbPersonne" class="col-form-label col-md-3"><b>Nombre</b></label>
+                        <div class="col-md-9">
+                            <input asp-for="Reservation.NbPersonne" class="form-control" id="number" min="0"/>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <label class="form-control-label" for="name"> Date</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" name="date" id="date">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label class="form-control-label" for="name"> Choix de menu</label>
-                        </div>
-                        <div class="col">
-                               <select class="combo">
-                                @foreach (Menuchoices choix in Model)
-                                {
-                                    @*menuchoices.Description*@
-                                    <option value="@choix.Description">@Html.DisplayFor(model => choix.Description)</option>
-                                }
-
-                                </select>
+                    <br />
+                    <div class="form-group row">
+                        <label asp-for="Reservation.DateReservation" class="col-form-label col-md-3"><b>Date</b></label>
+                        <div class="col-md-9">
+                            <input asp-for="Reservation.DateReservation" class="form-control" id="date"/>
                         </div>
                     </div>
-                    <div class="row">
+                    <br />
+                    <div class="form-group row">
+                        <label asp-for="Reservation.MenuChoiceId" class="col-form-label col-md-3"><b>Choix de menu</b></label>
+                        <div class="col-md-9">
+                            <select asp-for="Reservation.MenuChoiceId" asp-items="@(new SelectList(Model.Menuchoices, "Id", "Description"))" class="form-control">
+                                <option value="0"></option>
+                            </select>
+                            <span asp-validation-for="Reservation.MenuChoiceId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <hr />
+                    <br />
+                    <div class="row text-center">
                         <div class="col">
+<<<<<<< HEAD
                             <div class="text-center">
                                 <input type="submit" value="Confirmer la réservation" class="btn btn-primary" />
                             </div>
+=======
+                            <input type="submit" value="Confirmer la réservation" class="btn btn-primary"/>
+>>>>>>> 125cf51691fda5e0a8d41c8cc36819d949779358
                         </div>
                     </div>
                 </form>
