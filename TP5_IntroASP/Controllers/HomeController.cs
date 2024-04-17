@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol;
 using System.Diagnostics;
 using TP5_IntroASP.DataAccessLayer;
 using TP5_IntroASP.Models;
+using TP5_IntroASP.ViewModels;
 
 namespace TP5_IntroASP.Controllers
 {
@@ -17,14 +19,32 @@ namespace TP5_IntroASP.Controllers
         public IActionResult Index()
         {
             DAL dal = new DAL();
-            List<Menuchoices> choix = dal.MenuchoicesFact.GetAll();
-            return View(choix);
+            ReservationVM reservationVM = new ReservationVM(dal.MenuchoicesFact.GetAll(), null);
+            return View(reservationVM);
         }
-        public IActionResult GetReservation(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(ReservationVM reservationVM)
         {
-            DAL dal = new DAL();
-            Reservations reservation = dal.ReservationFact.Get(id);
-            return View(reservation);   
+            if (reservationVM.Reservation != null)
+            {
+                DAL dal = new DAL();
+                Reservations? existe = dal.ReservationFact.Get(reservationVM.Reservation.Id);
+
+                if (existe != null && existe.Id == reservationVM.Reservation.Id)
+                {
+                    ModelState.AddModelError("Id", "Cette réservation est déja faite.");
+                }
+
+                if (!ModelState.IsValid)
+                {
+
+                    return View("Index", reservationVM.Reservation);
+                }
+
+                dal.ReservationFact.Add(reservationVM.Reservation.Nom, reservationVM.Reservation.Courriel, reservationVM.Reservation.NbPersonne, reservationVM.Reservation.DateReservation, reservationVM.Reservation.MenuChoiceId);
+            }
+            return RedirectToAction("Details", reservationVM.Reservation);
         }
         public IActionResult Privacy()
         {
@@ -37,6 +57,6 @@ namespace TP5_IntroASP.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-       
+
     }
 }

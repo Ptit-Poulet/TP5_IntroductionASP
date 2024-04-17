@@ -34,11 +34,10 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
             {
                 DAL dal = new DAL();
 
-                //TODO si Il y a déjà ce choix
                 Menuchoices? existe = dal.MenuchoicesFact.GetByDescription(menu.Description);
                 if (existe != null && existe.Description == menu.Description)
                 {
-                    ModelState.AddModelError("menu.Description", "Le choix de menu existe déjà.");
+                    ModelState.AddModelError("Description", "Le choix de menu existe déjà.");
                 }
 
                 if (!ModelState.IsValid)
@@ -76,12 +75,12 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
             if (menu != null && menu.Description != null)
             {
                 DAL dal = new DAL();
-                //TODO si Il n'y a aucune modification
+
                 Menuchoices? existe = dal.MenuchoicesFact.GetByDescription(menu.Description);
                 
                 if (existe != null && existe.Description == menu.Description)
                 {
-                    ModelState.AddModelError("menu.Description", "Le choix de menu existe déjà.");
+                    ModelState.AddModelError("Description", "Le choix de menu existe déjà.");
                 }
 
                 if (!ModelState.IsValid)

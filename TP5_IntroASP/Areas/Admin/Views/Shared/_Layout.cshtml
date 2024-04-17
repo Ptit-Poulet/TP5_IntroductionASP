@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar  navbar-expand-lg navbar-expand-md bg-body-tertiary bg-dark navbar-dark" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="Admin" asp-controller="Menuchoices" asp-action="Index">Administration</a>
+                <a class="navbar-brand fs-1" asp-area="Admin" asp-controller="Menuchoices" asp-action="Index">Administration</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,10 +24,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Admin" asp-controller="Menuchoices" asp-action="Index"><i class="fa-regular fa-rectangle-list"></i> Les choix de menu</a>
+                            <a class="nav-link fs-1" asp-area="Admin" asp-controller="Menuchoices" asp-action="Index"><i class="fa-regular fa-rectangle-list"></i> Les choix de menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Admin" asp-controller="Reservations" asp-action="List"><i class="fa-solid fa-user"></i> Les réservations</a>
+                            <a class="nav-link fs-1" asp-area="Admin" asp-controller="Reservations" asp-action="List"><i class="fa-solid fa-user"></i> Les réservations</a>
                         </li>
                     </ul>
                 </div>
@@ -40,9 +40,22 @@
         </main>
     </div>
 
-    <footer class="bg-dark text-center text-white fixed-bottom">
-        <div class="container">
-            ASP.NET MVC - &copy;Samara Boudreault
+    <footer class="bg-dark text-center text-white fixed-bottom  h-25">
+        <div class="text-center">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 data-flex">
+                <li class="nav-item" style="margin-right: 20px;">
+                    <a class="nav-link fs-2" asp-area="Admin" asp-controller="Menuchoices" asp-action="Index"><i class="fa-regular fa-rectangle-list"></i> Les choix de menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-2" asp-area="Admin" asp-controller="Reservations" asp-action="List"><i class="fa-solid fa-user"></i> Les réservations</a>
+                </li>
+            </ul>
+        </div>
+
+        <br/>
+        <div class="container fs-2">
+            ASP.NET MVC - &copy;Samara Boudreault |
+            <a asp-area="" asp-controller="Home" asp-action="Index">Réservation</a>
         </div>
     </footer>
     <!-- Placé à la fin du document pour un chargement plus rapide des pages -->
