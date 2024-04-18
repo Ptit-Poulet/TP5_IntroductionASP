@@ -32,6 +32,7 @@ namespace TP5_IntroASP.Models
         [Required(ErrorMessage = "Le choix de menu est requis.")]
         public int MenuChoiceId { get; set; }
 
+        private List<Menuchoices> Menuchoices { get; set; }
         //Pour la désérialisation
         public Reservations()
         {
@@ -46,6 +47,18 @@ namespace TP5_IntroASP.Models
             NbPersonne = nbPersonne;
             DateReservation = dateReservation;
             MenuChoiceId = menuChoiceId;
+        }
+
+        public string GetMenuchoicesName(int id)
+        {
+            foreach (Menuchoices choix in Menuchoices)
+            {
+                if (choix.Id == id)
+                {
+                    return choix.Description;
+                }
+            }
+            return String.Empty;
         }
     }
 }

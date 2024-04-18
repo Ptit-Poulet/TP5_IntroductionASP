@@ -120,6 +120,7 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
             return choice;
         }
 
+
         public Menuchoices GetById(int id)
         {
             Menuchoices choice = new Menuchoices();

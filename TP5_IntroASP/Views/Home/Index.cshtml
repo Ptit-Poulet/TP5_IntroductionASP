@@ -19,33 +19,39 @@
                         <label asp-for="Reservation.Nom" class="col-form-label col-md-3"><b>Nom</b></label>
                         <div class="col-md-9">
                             <input asp-for="Reservation.Nom" class="form-control" />
+                            <span asp-validation-for="Reservation.Nom" class="text-danger"></span>
+
                         </div>
                     </div>
-                    <br />
+
                     <div class="form-group row">
                         <label asp-for="Reservation.Courriel" class="col-form-label col-md-3"><b>Courriel</b></label>
-                        <div class="col-md-9 input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">@@</div>
-                            </div>
+                        <div class="col-md-9 ">
+                                @*<div class="input-group-text">@@</div>*@
                             <input asp-for="Reservation.Courriel" class="form-control"/>
+                            <span asp-validation-for="Reservation.Courriel" class="text-danger"></span>
+
                         </div>
                     </div>
-                    <br />
+                    
                     <div class="form-group row">
                         <label asp-for="Reservation.NbPersonne" class="col-form-label col-md-3"><b>Nombre</b></label>
                         <div class="col-md-9">
                             <input asp-for="Reservation.NbPersonne" class="form-control" id="number" min="0"/>
+                            <span asp-validation-for="Reservation.NbPersonne" class="text-danger"></span>
+
                         </div>
                     </div>
-                    <br />
+                    
                     <div class="form-group row">
                         <label asp-for="Reservation.DateReservation" class="col-form-label col-md-3"><b>Date</b></label>
                         <div class="col-md-9">
                             <input asp-for="Reservation.DateReservation" class="form-control" id="date"/>
+                            <span asp-validation-for="Reservation.DateReservation" class="text-danger"></span>
+
                         </div>
                     </div>
-                    <br />
+                  
                     <div class="form-group row">
                         <label asp-for="Reservation.MenuChoiceId" class="col-form-label col-md-3"><b>Choix de menu</b></label>
                         <div class="col-md-9">
@@ -56,16 +62,12 @@
                         </div>
                     </div>
                     <hr />
-                    <br />
+                    
                     <div class="row text-center">
                         <div class="col">
-<<<<<<< HEAD
                             <div class="text-center">
                                 <input type="submit" value="Confirmer la réservation" class="btn btn-primary" />
                             </div>
-=======
-                            <input type="submit" value="Confirmer la réservation" class="btn btn-primary"/>
->>>>>>> 125cf51691fda5e0a8d41c8cc36819d949779358
                         </div>
                     </div>
                 </form>

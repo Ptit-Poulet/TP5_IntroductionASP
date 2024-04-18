@@ -25,8 +25,8 @@ namespace TP5_IntroASP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Index(ReservationVM reservationVM)
-        {
-            if (reservationVM.Reservation != null)
+        { 
+            if (reservationVM != null)
             {
                 DAL dal = new DAL();
                 Reservations? existe = dal.ReservationFact.Get(reservationVM.Reservation.Id);
@@ -44,7 +44,8 @@ namespace TP5_IntroASP.Controllers
 
                 dal.ReservationFact.Add(reservationVM.Reservation.Nom, reservationVM.Reservation.Courriel, reservationVM.Reservation.NbPersonne, reservationVM.Reservation.DateReservation, reservationVM.Reservation.MenuChoiceId);
             }
-            return RedirectToAction("Details", reservationVM.Reservation);
+            Reservations nouvelleReservastion = reservationVM.Reservation;
+            return RedirectToAction("Details", nouvelleReservastion);
         }
         public IActionResult Privacy()
         {
