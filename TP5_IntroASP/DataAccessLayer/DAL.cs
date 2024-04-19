@@ -15,9 +15,7 @@ namespace TP5_IntroASP.DataAccessLayer
                 if(_menuchoicesFact == null)
                 {
                     _menuchoicesFact = new MenuchoicesFactory();
-
                 }
-
                 return _menuchoicesFact;
             }
         }
