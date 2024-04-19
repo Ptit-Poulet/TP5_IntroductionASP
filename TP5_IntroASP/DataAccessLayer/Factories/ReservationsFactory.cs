@@ -14,13 +14,20 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
             int nbPersonne = (int)mySqlDataReader["NbPersonne"];
             DateTime dateReservation = (DateTime)mySqlDataReader["DateReservation"];
             int menuchoiceId = (int)mySqlDataReader["MenuChoiceId"];
+            string? menuDescription = mySqlDataReader["Description"].ToString();
 
-            return new Reservations(id, nom, courriel, nbPersonne, dateReservation, menuchoiceId);
+            Reservations reservation = new Reservations(id, nom, courriel, nbPersonne, dateReservation, menuchoiceId);
+
+            if(menuDescription!= null )
+            {
+                reservation.MenuDescription = menuDescription;
+            }
+            return reservation;
         }
 
         public Reservations CreateEmpty()
         {
-            return new Reservations(0, string.Empty, string.Empty, 0, DateTime.Now , 0);
+            return new Reservations(0, string.Empty, string.Empty, 0, DateTime.Now, 0);
         }
 
         /// <summary>
@@ -39,7 +46,9 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
                 mySqlCnn.Open();
 
                 MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
-                mySqlCmd.CommandText = "SELECT * FROM tp5_reservations";
+                mySqlCmd.CommandText = "SELECT * FROM tp5_reservations " +
+                    "INNER JOIN tp5_menuchoices ON tp5_menuchoices.Id = tp5_reservations.MenuChoiceId " +
+                    "ORDER BY DateReservation";
 
                 mySqlDataReader = mySqlCmd.ExecuteReader();
                 while (mySqlDataReader.Read())
@@ -75,15 +84,16 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
 
                 MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
                 mySqlCmd.CommandText = "SELECT * FROM tp5_reservations " +
-                    "WHERE Id = @Id ORDER BY DateReservation DESC";
+                    "INNER JOIN tp5_menuchoices ON tp5_menuchoices.Id = tp5_reservations.MenuChoiceId " +
+                    "WHERE tp5_reservations.Id = @Id ORDER BY DateReservation DESC";
 
                 mySqlCmd.Parameters.AddWithValue("@Id", id);
 
                 mySqlDataReader = mySqlCmd.ExecuteReader();
                 while (mySqlDataReader.Read())
                 {
-                     reservation = CreateFromReader(mySqlDataReader);
-                    
+                    reservation = CreateFromReader(mySqlDataReader);
+
                 }
             }
             finally
@@ -103,7 +113,7 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
         /// <param name="nbPersonne"></param>
         /// <param name="dateReservation"></param>
         /// <param name="menuchoiceId"></param>
-        public void Add(string nom, string courriel, int nbPersonne, DateTime dateReservation, int menuchoiceId)
+        public void Add(Reservations reservation)
         {
             MySqlConnection? mySqlCnn = null;
             MySqlDataReader? mySqlDataReader = null;
@@ -117,16 +127,20 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
                 mySqlCmd.CommandText = "INSERT INTO tp5_reservations (Nom, Courriel, NbPersonne, DateReservation, MenuChoiceId) " +
                     "VALUES (@Nom, @Courriel, @NbPersonne, @DateReservation, @MenuChoiceId) ";
 
-                mySqlCmd.Parameters.AddWithValue("@Nom", nom);
-                mySqlCmd.Parameters.AddWithValue("@Courriel", courriel);
-                mySqlCmd.Parameters.AddWithValue("@NbPersonne", nbPersonne);
-                mySqlCmd.Parameters.AddWithValue("@DateReservation", dateReservation);
-                mySqlCmd.Parameters.AddWithValue("@MenuChoiceId", menuchoiceId);
+                mySqlCmd.Parameters.AddWithValue("@Nom", reservation.Nom);
+                mySqlCmd.Parameters.AddWithValue("@Courriel", reservation.Courriel);
+                mySqlCmd.Parameters.AddWithValue("@NbPersonne", reservation.NbPersonne);
+                mySqlCmd.Parameters.AddWithValue("@DateReservation", reservation.DateReservation);
+                mySqlCmd.Parameters.AddWithValue("@MenuChoiceId", reservation.MenuChoiceId);
 
                 mySqlCmd.ExecuteNonQuery();
 
+                if (reservation.Id == 0)
+                {
+                    reservation.Id = (int)mySqlCmd.LastInsertedId;
+                }
 
-            }
+                }
             finally
             {
                 mySqlDataReader?.Close();
@@ -150,6 +164,7 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
 
                 MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
                 mySqlCmd.CommandText = "DELETE FROM tp5_reservations " +
+                    "INNER JOIN tp5_menuchoices ON tp5_menuchoices.Id = tp5_reservations.MenuChoiceId " +
                     "WHERE Id = @Id";
 
                 mySqlCmd.Parameters.AddWithValue("@Id", id);

@@ -20,15 +20,14 @@
                         <div class="col-md-9">
                             <input asp-for="Reservation.Nom" class="form-control" />
                             <span asp-validation-for="Reservation.Nom" class="text-danger"></span>
-
+                            
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label asp-for="Reservation.Courriel" class="col-form-label col-md-3"><b>Courriel</b></label>
-                        <div class="col-md-9 ">
-                                @*<div class="input-group-text">@@</div>*@
-                            <input asp-for="Reservation.Courriel" class="form-control"/>
+                        <div class="col-md-9">
+                            <input asp-for="Reservation.Courriel" class=" input-group form-control" placeholder="@@"/>
                             <span asp-validation-for="Reservation.Courriel" class="text-danger"></span>
 
                         </div>
@@ -67,6 +66,8 @@
                         <div class="col">
                             <div class="text-center">
                                 <input type="submit" value="Confirmer la réservation" class="btn btn-primary" />
+                                <span asp-validation-for="Reservation" class="text-danger"></span>
+
                             </div>
                         </div>
                     </div>
@@ -76,4 +77,8 @@
     </div>
 </div>
 
-
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

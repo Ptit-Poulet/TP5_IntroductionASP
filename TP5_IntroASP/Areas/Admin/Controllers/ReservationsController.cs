@@ -25,7 +25,7 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
                 
                 if (reservation != null)
                 {
-
+                    //METTRE UNE AUTRE VM 
                     return View(reservation);
                 }
             }

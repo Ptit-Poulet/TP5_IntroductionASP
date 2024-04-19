@@ -18,7 +18,7 @@ namespace TP5_IntroASP.Models
         public string Courriel { get; set; }
 
         [Display(Name = "Nombre")]
-        [Range(0, short.MaxValue, ErrorMessage = "Le nombre de personne doit être positif.")]
+        [Range(1, short.MaxValue, ErrorMessage = "Le nombre de personne doit être positif.")]
         [Required(ErrorMessage = "Le nombre de personne est requis.")]
         public int NbPersonne { get; set; }
 
@@ -28,9 +28,14 @@ namespace TP5_IntroASP.Models
         public DateTime DateReservation { get; set; }
 
         [Display(Name = "Choix de menu")]
-        [Range(0, short.MaxValue, ErrorMessage = "Le choix de menu doit être positif.")]
+        [Range(1, short.MaxValue, ErrorMessage = "Le choix de menu est requis.")]
         [Required(ErrorMessage = "Le choix de menu est requis.")]
         public int MenuChoiceId { get; set; }
+
+        [Display(Name = "Choix de menu")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Le choix de menu est requis.")]
+        [StringLength(15, ErrorMessage = "Le choix de menu ne doit pas avoir plus de {1} caractères.")]
+        public string? MenuDescription { get; set; }
 
         private List<Menuchoices> Menuchoices { get; set; }
         //Pour la désérialisation
@@ -47,18 +52,7 @@ namespace TP5_IntroASP.Models
             NbPersonne = nbPersonne;
             DateReservation = dateReservation;
             MenuChoiceId = menuChoiceId;
-        }
-
-        public string GetMenuchoicesName(int id)
-        {
-            foreach (Menuchoices choix in Menuchoices)
-            {
-                if (choix.Id == id)
-                {
-                    return choix.Description;
-                }
-            }
-            return String.Empty;
+           
         }
     }
 }

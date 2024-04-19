@@ -22,31 +22,39 @@ namespace TP5_IntroASP.Controllers
             ReservationVM reservationVM = new ReservationVM(dal.MenuchoicesFact.GetAll(), null);
             return View(reservationVM);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Index(ReservationVM reservationVM)
         { 
-            if (reservationVM != null)
+            if (reservationVM != null && reservationVM.Reservation != null)
             {
                 DAL dal = new DAL();
                 Reservations? existe = dal.ReservationFact.Get(reservationVM.Reservation.Id);
 
-                if (existe != null && existe.Id == reservationVM.Reservation.Id)
+                if (existe != null && existe.Id != reservationVM.Reservation.Id)
                 {
-                    ModelState.AddModelError("Id", "Cette réservation est déja faite.");
+                    ModelState.AddModelError("Reservation", "Cette réservation est déja faite.");
+                }
+
+                if(reservationVM.Reservation.Nom == null || reservationVM.Reservation.Courriel == null || reservationVM.Reservation.NbPersonne == null || reservationVM.Reservation.DateReservation == null )
+                {
+                    
                 }
 
                 if (!ModelState.IsValid)
                 {
 
-                    return View("Index", reservationVM.Reservation);
+                    return View("Index", reservationVM);
                 }
 
-                dal.ReservationFact.Add(reservationVM.Reservation.Nom, reservationVM.Reservation.Courriel, reservationVM.Reservation.NbPersonne, reservationVM.Reservation.DateReservation, reservationVM.Reservation.MenuChoiceId);
+                dal.ReservationFact.Add(reservationVM.Reservation);
+            
             }
             Reservations nouvelleReservastion = reservationVM.Reservation;
-            return RedirectToAction("Details", nouvelleReservastion);
+            return RedirectToAction("Details","Reservation" ,new {id = nouvelleReservastion.Id});
         }
+       
         public IActionResult Privacy()
         {
             return View();

@@ -35,17 +35,17 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-5">
             @RenderBody()
         </main>
     </div>
 
-    <div class="text-center bg-dark text-white fixed-bottom h-25">
+    <div class="text-center bg-dark text-white sticky-bottom h-25">
         <a class="fs-1" asp-area="Admin" asp-controller="Menuchoices" asp-action="Index"><i class="fa-regular fa-rectangle-list"></i> Les choix de menu</a>&nbsp;&nbsp;&nbsp;
         <a class="fs-1" asp-area="Admin" asp-controller="Reservations" asp-action="List"><i class="fa-solid fa-user"></i> Les réservations</a>
     </div>
 
-    <footer class="bg-dark text-center text-white fixed-bottom">
+    <footer class="bg-dark text-center text-white sticky-bottom">
 
         <br />
         <div class="container fs-2">

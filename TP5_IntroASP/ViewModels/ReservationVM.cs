@@ -4,7 +4,7 @@ namespace TP5_IntroASP.ViewModels
 {
     public class ReservationVM
     {
-        public List<Menuchoices> Menuchoices { get; set; }
+        public List<Menuchoices>? Menuchoices { get; set; }
         public Reservations Reservation { get; set; } = new Reservations();
 
         public ReservationVM()
@@ -16,17 +16,6 @@ namespace TP5_IntroASP.ViewModels
         {
             Menuchoices = menuchoices;
             Reservation = reservation;
-        }
-        public string GetMenuchoicesName(int id)
-        {
-            foreach (Menuchoices choix in Menuchoices)
-            {
-                if (choix.Id == id)
-                {
-                    return choix.Description;
-                }
-            }
-            return String.Empty;
         }
 
     }

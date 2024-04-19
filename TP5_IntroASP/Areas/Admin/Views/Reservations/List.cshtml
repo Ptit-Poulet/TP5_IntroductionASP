@@ -19,7 +19,7 @@
             <th>@Html.DisplayNameFor(model => model[0].DateReservation)</th>
             <th>@Html.DisplayNameFor(model => model[0].Nom)</th>
             <th class="d-none d-md-block">@Html.DisplayNameFor(model => model[0].Courriel)</th>
-            <th>@Html.DisplayNameFor(model => model[0].MenuChoiceId)</th>
+            <th>@Html.DisplayNameFor(model => model[0].MenuDescription)</th>
             <th>@Html.DisplayNameFor(model => model[0].NbPersonne)</th>
 
             <th class="d-none d-md-block">Actions</th>
@@ -37,7 +37,7 @@
                     <td>@Html.DisplayFor(model => reservation.Nom)</td>
                     <td class="d-none d-md-block">@Html.DisplayFor(model => reservation.Courriel)</td>
                     @*TODO Donner le nom du choix de menu*@
-                    <td>@Html.DisplayFor(model => reservation.MenuChoiceId)</td>
+                    <td>@Html.DisplayFor(model => reservation.MenuDescription)</td>
                     <td>@Html.DisplayFor(model => reservation.NbPersonne)</td>
 
                     <td>

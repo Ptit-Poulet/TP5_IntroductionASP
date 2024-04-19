@@ -1,3 +1,12 @@
 ﻿main {
-    margin-block-start: 85px;
+    /*margin-block-start: 70px;*/
+    padding-bottom: 190px;
+}
+
+.sticky-bottom {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Additional styling for your sticky bottom element */
 }
