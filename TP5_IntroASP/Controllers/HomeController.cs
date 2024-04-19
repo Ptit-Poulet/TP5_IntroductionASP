@@ -25,7 +25,7 @@ namespace TP5_IntroASP.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(ReservationVM reservationVM)
+        public IActionResult Create(ReservationVM reservationVM)
         { 
             if (reservationVM != null && reservationVM.Reservation != null)
             {
