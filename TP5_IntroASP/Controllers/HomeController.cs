@@ -27,6 +27,7 @@ namespace TP5_IntroASP.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(ReservationVM reservationVM)
         { 
+            
             if (reservationVM != null && reservationVM.Reservation != null)
             {
                 DAL dal = new DAL();
@@ -35,11 +36,6 @@ namespace TP5_IntroASP.Controllers
                 if (existe != null && existe.Id != reservationVM.Reservation.Id)
                 {
                     ModelState.AddModelError("Reservation", "Cette réservation est déja faite.");
-                }
-
-                if(reservationVM.Reservation.Nom == null || reservationVM.Reservation.Courriel == null || reservationVM.Reservation.NbPersonne == null || reservationVM.Reservation.DateReservation == null )
-                {
-                    
                 }
 
                 if (!ModelState.IsValid)

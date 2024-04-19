@@ -11,9 +11,8 @@ namespace TP5_IntroASP.Controllers
         {
             DAL dal = new DAL();
             Reservations nouvelleReservation = dal.ReservationFact.Get(id);
-            ReservationDetailsVM detail = new ReservationDetailsVM(
-                nouvelleReservation.MenuChoiceId,
-                nouvelleReservation);
+            Menuchoices menu = dal.MenuchoicesFact.Get(nouvelleReservation.MenuChoiceId);
+            ReservationDetailsVM detail = new ReservationDetailsVM(nouvelleReservation, menu);
             
             return View(detail);
         }

@@ -32,12 +32,8 @@ namespace TP5_IntroASP.Models
         [Required(ErrorMessage = "Le choix de menu est requis.")]
         public int MenuChoiceId { get; set; }
 
-        [Display(Name = "Choix de menu")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Le choix de menu est requis.")]
-        [StringLength(15, ErrorMessage = "Le choix de menu ne doit pas avoir plus de {1} caractères.")]
         public string? MenuDescription { get; set; }
 
-        private List<Menuchoices> Menuchoices { get; set; }
         //Pour la désérialisation
         public Reservations()
         {
@@ -54,5 +50,6 @@ namespace TP5_IntroASP.Models
             MenuChoiceId = menuChoiceId;
            
         }
+
     }
 }

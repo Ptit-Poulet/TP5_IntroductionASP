@@ -8,10 +8,12 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
     [Area("Admin")]
     public class ReservationsController : Controller
     {
+
         public IActionResult List()
         {
             DAL dal = new DAL();
             List<Reservations> reservations = dal.ReservationFact.GetAll();
+
             return View(reservations);
 
         }
@@ -22,10 +24,9 @@ namespace TP5_IntroASP.Areas.Admin.Controllers
             {
                 DAL dal = new DAL();
                 Reservations? reservation = dal.ReservationFact.Get(id);
-                
+
                 if (reservation != null)
                 {
-                    //METTRE UNE AUTRE VM 
                     return View(reservation);
                 }
             }

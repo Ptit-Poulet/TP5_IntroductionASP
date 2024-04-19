@@ -164,7 +164,6 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
 
                 MySqlCommand mySqlCmd = mySqlCnn.CreateCommand();
                 mySqlCmd.CommandText = "DELETE FROM tp5_reservations " +
-                    "INNER JOIN tp5_menuchoices ON tp5_menuchoices.Id = tp5_reservations.MenuChoiceId " +
                     "WHERE Id = @Id";
 
                 mySqlCmd.Parameters.AddWithValue("@Id", id);
@@ -179,5 +178,6 @@ namespace TP5_IntroASP.DataAccessLayer.Factories
                 mySqlCnn?.Close();
             }
         }
+
     }
 }

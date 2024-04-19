@@ -32,8 +32,8 @@
                     <td class="d-flex justify-content-start">@Html.DisplayFor(model => choix.Description)</td>
 
                     <td class="d-flex justify-content-end">
-                        <a asp-action="Edit" asp-route-id="@choix.Id" id="edit" title="Modifier"><i class="fa-regular fa-pen-to-square"></i></a> |
-                        <a asp-action="Delete" asp-route-id="@choix.Id" id="delete" title="Supprimer"><i class="fa-regular fa-trash-can"></i></a>
+                        <a asp-action="Edit" asp-route-id="@choix.Id"><span class="edit-icon" data-id="1" title="Modifier"><i class="fa-regular fa-pen-to-square"></i></span></a> |
+                        <a asp-action="Delete" asp-route-id="@choix.Id"><span class="delete-icon" data-id="1" title="Supprimer"><i class="fa-regular fa-trash-can"></i></span></a>
                     </td>
                 </tr>
             }

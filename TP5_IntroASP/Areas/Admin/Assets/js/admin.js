@@ -1,10 +1,17 @@
 ﻿$(document).ready(function () {
 
-    $("#edit").hover(function () {
-        $(this).tooltip();
-    })
+    //$(".edit-icon").hover(function () {
+    //    $(this).tooltip();
+    //})
 
-    $("#delete").hover(function () {
-        $(this).tooltip();
-    })
+    //$(".delete-icon").hover(function () {
+    //    $(this).tooltip();
+    //})
+
+    $('.edit, .delete').tooltip({
+        position: {
+            my: 'center top',
+            at: 'center bottom'
+        }
+    });
 });

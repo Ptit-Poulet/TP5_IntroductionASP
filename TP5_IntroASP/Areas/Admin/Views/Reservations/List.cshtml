@@ -36,12 +36,12 @@
                     <td>@Html.DisplayFor(model => reservation.DateReservation)</td>
                     <td>@Html.DisplayFor(model => reservation.Nom)</td>
                     <td class="d-none d-md-block">@Html.DisplayFor(model => reservation.Courriel)</td>
-                    @*TODO Donner le nom du choix de menu*@
+
                     <td>@Html.DisplayFor(model => reservation.MenuDescription)</td>
-                    <td>@Html.DisplayFor(model => reservation.NbPersonne)</td>
+                    <td>@Html.DisplayFor(model => reservation.NbPersonne) pers.</td>
 
                     <td>
-                        <a asp-action="Delete" asp-route-id="@reservation.Id" id="delete" title="Supprimer"><i class="fa-regular fa-trash-can"></i></a>
+                        <a asp-action="Delete" asp-route-id="@reservation.Id"><span class="delete-icon" data-id="1" title="Supprimer"><i class="fa-regular fa-trash-can"></i></span></a>
                     </td>
                 </tr>
             }
